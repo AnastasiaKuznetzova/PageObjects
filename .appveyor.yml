@@ -7,10 +7,12 @@ branches:
     - master
 
 build: off
-
 install:
-  - java -jar ./artifacts/app-ibank.jar -P:profile=test &
-  - chmod +x gradlew
+  - ps: $App = Start-Process -FilePath java -ArgumentList "-jar ./artifacts/app-ibank-build-for-testers.jar" -PassThru
 
 build_script:
-  - ./gradlew test -Dselenide.headless=true --info
+  - ps: chmod +x gradlew
+  - ps: ./gradlew test --info "-Dselenide.headless=true"
+
+on_finish:
+  - ps: Stop-Process -Id $App.Id
