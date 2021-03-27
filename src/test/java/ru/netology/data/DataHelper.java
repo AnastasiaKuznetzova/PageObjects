@@ -1,6 +1,5 @@
 package ru.netology.data;
 
-import lombok.Data;
 import lombok.Value;
 
 public class DataHelper {
@@ -27,19 +26,13 @@ public class DataHelper {
         return new VerificationCode("12345");
     }
 
-
-    @Value
-    @Data
-    public static class Card {
-        private String number;
-        private int balance;
+    public static String getNumberOfFirstCard() {
+        String c = "5559000000000001";
+        return c;
     }
 
-    public static Card getFirstCard() {
-        return new Card("5559 0000 0000 0001", 10000);
-    }
-
-    public static Card getSecondCard() {
-        return new Card("5559 0000 0000 0002", 10000);
+    public static String getNumberOfSecondCard() {
+        String c = "5559000000000002";
+        return c;
     }
 }
